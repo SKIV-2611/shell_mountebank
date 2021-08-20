@@ -1,0 +1,1 @@
+mb start --logfile mb.log --loglevel info
