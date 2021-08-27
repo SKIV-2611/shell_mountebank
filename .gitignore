@@ -1,5 +1,4 @@
 # Ignoring logs
 *.log
-# Ignoring JSON
-*.json
+
 *.pid
