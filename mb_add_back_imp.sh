@@ -1,0 +1,1 @@
+curl -i -X POST -H 'Content-Type: application/json' http://localhost:2525/imposters -d "@ABS_to_DBS_imposter.json"
