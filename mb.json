@@ -52,6 +52,23 @@
           ]
         }
       ]
+    },
+    {
+      "protocol": "http",
+      "port": 4689,
+      "recordRequests": true,
+      "stubs": [
+        {
+          "responses": [
+            {
+              "proxy": {
+                "to": "http://localhost:64633/api/PlugPaymentOrders",
+                "mode": "proxyTransparent"
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
