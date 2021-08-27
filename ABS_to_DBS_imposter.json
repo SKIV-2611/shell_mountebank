@@ -1,0 +1,13 @@
+{
+    "port": 4689,
+    "protocol": "http",
+    "recordRequests": true,
+    "stubs": [{
+	    "responses": [{
+			"proxy": {
+				"to": "http://localhost:64633/api/PlugPaymentOrders",
+				"mode": "proxyTransparent"
+			}
+		}]
+    }]
+}
