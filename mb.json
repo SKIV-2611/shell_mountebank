@@ -1,0 +1,80 @@
+{
+  "imposters": [
+    {
+      "protocol": "http",
+      "port": 4545,
+      "recordRequests": true,
+      "stubs": [
+        {
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200
+              }
+            }
+          ],
+          "predicates": [
+            {
+              "and": [
+                {
+                  "equals": {
+                    "path": "/api/Payments",
+                    "method": "POST",
+                    "headers": {
+                      "Content-Type": "application/json"
+                    }
+                  }
+                },
+                {
+                  "matches": {
+                    "body": {
+                      "PaymentDetails": "^!test"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "equals": {
+                "path": "/api/Payments",
+                "method": "POST",
+                "headers": {
+                  "Content-Type": "application/json"
+                }
+              }
+            }
+          ],
+          "responses": [
+            {
+              "proxy": {
+                "to": "http://localhost:54616/api/Payments",
+                "mode": "proxyTransparent"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "protocol": "http",
+      "port": 4689,
+      "recordRequests": true,
+      "stubs": [
+        {
+          "responses": [
+            {
+              "proxy": {
+                "to": "http://localhost:64633/api/PlugPaymentOrders",
+                "mode": "proxyTransparent"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
