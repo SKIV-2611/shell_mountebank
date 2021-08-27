@@ -19,10 +19,7 @@
                 {
                   "equals": {
                     "path": "/api/Payments",
-                    "method": "POST",
-                    "headers": {
-                      "Content-Type": "application/json"
-                    }
+                    "method": "POST"
                   }
                 },
                 {
@@ -41,10 +38,7 @@
             {
               "equals": {
                 "path": "/api/Payments",
-                "method": "POST",
-                "headers": {
-                  "Content-Type": "application/json"
-                }
+                "method": "POST"
               }
             }
           ],
@@ -52,23 +46,6 @@
             {
               "proxy": {
                 "to": "http://localhost:54616/api/Payments",
-                "mode": "proxyTransparent"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "protocol": "http",
-      "port": 4689,
-      "recordRequests": true,
-      "stubs": [
-        {
-          "responses": [
-            {
-              "proxy": {
-                "to": "http://localhost:64633/api/PlugPaymentOrders",
                 "mode": "proxyTransparent"
               }
             }
