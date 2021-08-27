@@ -11,30 +11,26 @@
                     }
                 }
             ],
-            "predicates": [
-                {
-                    "and": [
-                        {
-                            "equals": {
-                                "path": "/api/Payments",
-                                "method": "POST",
-                                "headers": {
-                                    "Content-Type": "application/json"
-                                }
-                            }
-                        },
-                        {
-                            "matches":
-							{
-								"body":
-								{
-									"paymentDetails": "^!test"
-								}
-							}
+            "predicates": [{
+                "and":[
+				    {
+                        "equals": {
+                            "path": "/api/Payments",
+                            "method": "POST",
+						    "headers": {
+                                "Content-Type": "application/json"
+						    }
                         }
-                    ]
-                }
-            ]
+                    },
+					{
+					    "matches": {
+					    	"body": {
+							    "PaymentDetails": "^!test"
+						    }
+						}
+					}
+				]
+            }]
         },
         {
             "predicates": [
@@ -42,7 +38,9 @@
                     "equals": {
                         "path": "/api/Payments",
                         "method": "POST",
-                        "Content-Type": "application/json"
+						"headers": {
+                            "Content-Type": "application/json"
+						}
                     }
                 }
             ],
