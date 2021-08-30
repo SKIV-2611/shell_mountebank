@@ -5,7 +5,7 @@
     "stubs": [{
 	    "responses": [{
 			"proxy": {
-				"to": "http://localhost:64633/api/PlugPaymentOrders",
+				"to": "http://localhost:64633/api/PaymentOrders",
 				"mode": "proxyTransparent"
 			}
 		}]

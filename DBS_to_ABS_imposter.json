@@ -12,7 +12,7 @@
                 }
             ],
             "predicates": [{
-                "and":[
+                "and": [
 			        {
                         "equals": {
                             "path": "/api/Payments",
@@ -20,12 +20,38 @@
                         }
                     },
 					{
-					    "matches": {
-				    	    "body": {
-						        "PaymentDetails": "^!test"
-					        }
-					    }
-				    }
+						"matches": {
+							"body": {
+								"PaymentDetails": "^(.*!?(test|тест)).*(performed|выполнен).*"
+							}
+						}
+					}
+				]
+            }]
+        },
+		{
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200
+                    }
+                }
+            ],
+            "predicates": [{
+                "and": [
+			        {
+                        "equals": {
+                            "path": "/api/Payments",
+                            "method": "POST"
+                        }
+                    },
+					{
+						"matches": {
+							"body": {
+								"PaymentDetails": "^!?(test|тест).*(refused|отказан).*"
+							}
+						}
+					}
 				]
             }]
         },

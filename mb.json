@@ -10,6 +10,13 @@
             {
               "is": {
                 "statusCode": 200
+              },
+              "headers": {
+                "Location": "http://localhost:4545/api/Payments",
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "status": "Performed"
               }
             }
           ],
@@ -25,7 +32,42 @@
                 {
                   "matches": {
                     "body": {
-                      "PaymentDetails": "^!test"
+                      "PaymentDetails": "^(.*!?(test|тест)).*(performed|выполнен).*"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200
+              },
+              "headers": {
+                "Location": "http://localhost:4545/api/Payments",
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "status": "Refused"
+              }
+            }
+          ],
+          "predicates": [
+            {
+              "and": [
+                {
+                  "equals": {
+                    "path": "/api/Payments",
+                    "method": "POST"
+                  }
+                },
+                {
+                  "matches": {
+                    "body": {
+                      "PaymentDetails": "^!?(test|тест).*(refused|отказан).*"
                     }
                   }
                 }
@@ -46,23 +88,6 @@
             {
               "proxy": {
                 "to": "http://localhost:54616/api/Payments",
-                "mode": "proxyTransparent"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "protocol": "http",
-      "port": 4689,
-      "recordRequests": true,
-      "stubs": [
-        {
-          "responses": [
-            {
-              "proxy": {
-                "to": "http://localhost:64633/api/PlugPaymentOrders",
                 "mode": "proxyTransparent"
               }
             }
